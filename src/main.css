@@ -1,0 +1,31 @@
+.cvDisplay {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  height: auto;
+  border: solid black 1px;
+}
+
+.cvSideBar {
+  color: white;
+  background-color: darkcyan;
+  padding: 1em;
+}
+
+h1 {
+  border-bottom: solid 2px darkcyan;
+  padding-bottom: 0.25em;
+  margin: 0.5em 0.25em;
+  color: darkcyan;
+  text-align: center;
+}
+
+.cvBody {
+  text-align: left;
+}
+
+.cvDisplay h2 {
+  border-bottom: solid 2px darkcyan;
+  padding-bottom: 0.25em;
+  margin: 0.5em 0.25em;
+  color: darkcyan;
+}

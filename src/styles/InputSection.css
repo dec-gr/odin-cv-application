@@ -1,0 +1,15 @@
+.inputHeader {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: solid 2px darkcyan;
+  padding-bottom: 0.25em;
+  margin: 0.5em 0.25em;
+  color: darkcyan;
+  align-items: center;
+}
+
+button {
+  width: 137px;
+  border: solid black 1px;
+  height: 50px;
+}
