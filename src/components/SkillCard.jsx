@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-function SkillInput({ skill, onChangeHandler }) {
+function SkillInput({ skill, onChangeHandler, removeSkillHander }) {
   return (
     <label className="skillInput">
       <input
@@ -9,6 +9,7 @@ function SkillInput({ skill, onChangeHandler }) {
         value={skill.skill}
         onChange={(e) => onChangeHandler(skill.id, e)}
       ></input>
+      <button onClick={() => removeSkillHander(skill.id)}>X</button>
     </label>
   );
 }
@@ -33,12 +34,20 @@ export default function SkillInputList({ skills, setSkills }) {
     setSkills([...skills, { skill: '', id: uuidv4() }]);
   }
 
+  function removeSkillHander(id) {
+    setSkills(skills.filter((item) => item.id !== id));
+  }
+
   return (
     <div className="div">
       <ul>
         {skills.map((skill) => (
           <li key={skill.id}>
-            <SkillInput skill={skill} onChangeHandler={handleSkillChange} />
+            <SkillInput
+              skill={skill}
+              onChangeHandler={handleSkillChange}
+              removeSkillHander={removeSkillHander}
+            />
           </li>
         ))}
       </ul>
