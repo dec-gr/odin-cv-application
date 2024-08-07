@@ -4,6 +4,7 @@ import Card from './components/Card.jsx';
 import DataForm from './components/DataForm.jsx';
 import InputSection from './components/InputSection.jsx';
 import SkillInputList from './components/SkillCard.jsx';
+import EducationList from './components/EducationCard.jsx';
 
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
@@ -19,9 +20,13 @@ const CVData = {
 };
 
 const initialSkills = [
-  { skill: 'cycling', id: uuidv4() },
-  { skill: 'swimming', id: uuidv4() },
-  { skill: 'climbing', id: uuidv4() },
+  { id: uuidv4(), skill: 'cycling' },
+  { id: uuidv4(), skill: 'swimming' },
+  { id: uuidv4(), skill: 'climbing' },
+];
+
+const initialEducation = [
+  { school: 'Warwick', degree: 'Engineering', startDate: '05/12/98' },
 ];
 
 function CVAplication() {
@@ -29,6 +34,7 @@ function CVAplication() {
   const [summaryData, setSummaryData] = useState('');
 
   const [skills, setSkills] = useState(initialSkills);
+  const [education, setEducation] = useState(initialEducation);
 
   function handleFirstNameChange(e) {
     setApplicationData({ ...applicationData, firstName: e.target.value });
@@ -114,14 +120,7 @@ function CVAplication() {
         </InputSection>
         <InputSection sectionHeader="Education">
           <Card>
-            <DataForm>
-              <Input label="School" />
-              <Input label="Degree" />
-              <Input label="Start Date" type="date" />
-              <Input label="End Date" type="date" />
-              <Input label="Still Enrolled" type="checkbox" />
-              <Input label="Location" />
-            </DataForm>
+            <EducationList education={education} setEducation={setEducation} />
           </Card>
         </InputSection>
         <InputSection sectionHeader="Work History">
@@ -155,9 +154,18 @@ function CVAplication() {
             ad minim veniam.
           </p>
           <h2>Education</h2>
-          <h3>Masters of Water Engineering, Sep 2015 - June 2019</h3>
+
+          {education.map((educationEntry) => (
+            <div key={educationEntry.id}>
+              <h3>{educationEntry.degree}</h3>
+              <h4>{educationEntry.school}</h4>
+              <h4>{educationEntry.startDate}</h4>
+            </div>
+          ))}
+
+          {/* <h3>Masters of Water Engineering, Sep 2015 - June 2019</h3>
           <h4>Warwick University</h4>
-          <h5>Warwick, England</h5>
+          <h5>Warwick, England</h5> */}
         </div>
         <div className="cvSideBar">
           <div className="infoCont">
