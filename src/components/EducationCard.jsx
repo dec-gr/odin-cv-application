@@ -1,6 +1,7 @@
 import DataForm from './DataForm';
 import Input from './Input';
 import { useState } from 'react';
+import { updateValueInObjectArray } from './utils.js';
 import { v4 as uuidv4 } from 'uuid';
 
 const initialEducation = [
@@ -75,20 +76,6 @@ function EducationCard({
       </button>
     </DataForm>
   );
-}
-
-function updateValueInObjectArray(objectArray, id, fieldName, newValue) {
-  const newObjectArray = objectArray.map((entry) => {
-    if (entry.id === id) {
-      return {
-        ...entry,
-        [fieldName]: newValue,
-      };
-    } else {
-      return entry;
-    }
-  });
-  return newObjectArray;
 }
 
 export default function EducationList({ education, setEducation }) {

@@ -5,6 +5,7 @@ import DataForm from './components/DataForm.jsx';
 import InputSection from './components/InputSection.jsx';
 import SkillInputList from './components/SkillCard.jsx';
 import EducationList from './components/EducationCard.jsx';
+import WorkExperienceList from './components/WorkExperienceCard.jsx';
 
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
@@ -37,12 +38,26 @@ const initialEducation = [
   },
 ];
 
+const initialWorkExperience = [
+  {
+    id: uuidv4(),
+    position: 'water engineer',
+    company: 'hydrax',
+    location: 'London',
+    startDate: '1998-05-12',
+    endDate: '1998-05-12',
+    stillEmployed: false,
+    description: '',
+  },
+];
+
 function CVAplication() {
   const [applicationData, setApplicationData] = useState(CVData);
   const [summaryData, setSummaryData] = useState('');
 
   const [skills, setSkills] = useState(initialSkills);
   const [education, setEducation] = useState(initialEducation);
+  const [workExperience, setWorkExperience] = useState(initialWorkExperience);
 
   function handleFirstNameChange(e) {
     setApplicationData({ ...applicationData, firstName: e.target.value });
@@ -133,15 +148,10 @@ function CVAplication() {
         </InputSection>
         <InputSection sectionHeader="Work History">
           <Card>
-            <DataForm>
-              <Input label="Position" />
-              <Input label="Company" />
-              <Input label="Location" />
-              <Input label="Start Date" type="date" />
-              <Input label="End Date" type="date" />
-              <Input label="Still Employed" type="checkbox" />
-              <Input label="Description" />
-            </DataForm>
+            <WorkExperienceList
+              workExperience={workExperience}
+              setWorkExperience={setWorkExperience}
+            />
           </Card>
         </InputSection>
       </Card>
@@ -153,14 +163,13 @@ function CVAplication() {
           <h2>Professional Summary</h2>
           <p>{summaryData}</p>
           <h2>Work History</h2>
-          <h3>Water Engineer, Nov 2019 - Present</h3>
-          <h4>Hydrax</h4>
-          <h5>London, England</h5>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam.
-          </p>
+          {workExperience.map((workEntry) => (
+            <div key={workEntry.id}>
+              <h3>{workEntry.position}</h3>
+              <h4>{workEntry.company}</h4>
+              <h4>{workEntry.startDate}</h4>
+            </div>
+          ))}
           <h2>Education</h2>
 
           {education.map((educationEntry) => (
