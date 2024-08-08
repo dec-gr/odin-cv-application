@@ -26,7 +26,12 @@ const initialSkills = [
 ];
 
 const initialEducation = [
-  { school: 'Warwick', degree: 'Engineering', startDate: '05/12/98' },
+  {
+    school: 'Warwick',
+    degree: 'Engineering',
+    startDate: '1998-05-12',
+    id: uuidv4(),
+  },
 ];
 
 function CVAplication() {

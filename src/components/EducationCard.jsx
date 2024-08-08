@@ -50,51 +50,36 @@ function EducationCard({
   );
 }
 
+function updateValueInObjectArray(objectArray, id, fieldName, newValue) {
+  const newObjectArray = objectArray.map((entry) => {
+    if (entry.id === id) {
+      return {
+        ...entry,
+        [fieldName]: newValue,
+      };
+    } else {
+      return entry;
+    }
+  });
+  return newObjectArray;
+}
+
 export default function EducationList({ education, setEducation }) {
   function handleSchoolChange(id, e) {
     setEducation(
-      education.map((entry) => {
-        if (entry.id === id) {
-          return {
-            ...entry,
-            school: e.target.value,
-          };
-        } else {
-          return entry;
-        }
-      })
+      updateValueInObjectArray(education, id, 'school', e.target.value)
     );
   }
 
-  //TODO - Handle change functions have a lot of repeated code, could probably be a function on it's own
-  //parameters (education, id, field, new value)
   function handleDegreeChange(id, e) {
     setEducation(
-      education.map((entry) => {
-        if (entry.id === id) {
-          return {
-            ...entry,
-            degree: e.target.value,
-          };
-        } else {
-          return entry;
-        }
-      })
+      updateValueInObjectArray(education, id, 'degree', e.target.value)
     );
   }
 
   function handleStartDateChange(id, e) {
     setEducation(
-      education.map((entry) => {
-        if (entry.id === id) {
-          return {
-            ...entry,
-            startDate: e.target.value,
-          };
-        } else {
-          return entry;
-        }
-      })
+      updateValueInObjectArray(education, id, 'startDate', e.target.value)
     );
   }
 
