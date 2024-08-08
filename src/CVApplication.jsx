@@ -30,6 +30,9 @@ const initialEducation = [
     school: 'Warwick',
     degree: 'Engineering',
     startDate: '1998-05-12',
+    endDate: '1998-05-12',
+    stillEnrolled: true,
+    location: 'Warwick, England',
     id: uuidv4(),
   },
 ];

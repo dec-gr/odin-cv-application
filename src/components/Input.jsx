@@ -5,14 +5,22 @@ export default function Input({
   type = 'text',
   controlled = false,
   onChange,
-  value = '',
+  fieldValue = '',
+  disabled = false,
 }) {
+  // const value = type === 'checkBox' ? 'checked' : value;
+
   return (
     <label className="Input">
       {label}
       {/* <input type={type} role="textbox"></input> */}
       {controlled ? (
-        <input type={type} onChange={onChange} value={value}></input>
+        <input
+          type={type}
+          onChange={onChange}
+          value={fieldValue}
+          disabled={disabled}
+        ></input>
       ) : (
         <input type={type}></input>
       )}
