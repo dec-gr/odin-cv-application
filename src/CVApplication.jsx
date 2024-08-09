@@ -93,33 +93,33 @@ function CVAplication() {
               <Input
                 label="First Name"
                 controlled={true}
-                value={applicationData.firstName}
+                fieldValue={applicationData.firstName}
                 onChange={handleFirstNameChange}
               />
               <Input
                 label="Last Name"
                 controlled={true}
-                value={applicationData.lastName}
+                fieldValue={applicationData.lastName}
                 onChange={handleLastNameChange}
               />
               <Input
                 label="Email"
                 type="email"
                 controlled={true}
-                value={applicationData.email}
+                fieldValue={applicationData.email}
                 onChange={handleEmailChange}
               />
               <Input
                 label="Phone Number"
                 type="tel"
                 controlled={true}
-                value={applicationData.phone}
+                fieldValue={applicationData.phone}
                 onChange={handlePhoneChange}
               />
               <Input
                 label="Address"
                 controlled={true}
-                value={applicationData.address}
+                fieldValue={applicationData.address}
                 onChange={handleAddressChange}
               />
             </DataForm>
@@ -129,7 +129,7 @@ function CVAplication() {
           <Card>
             <InputTextBox
               label="Professional Summary"
-              value={summaryData}
+              fieldValue={summaryData}
               onChange={handleSummaryChange}
             />
           </Card>
@@ -162,12 +162,34 @@ function CVAplication() {
           </h1>
           <h2>Professional Summary</h2>
           <p>{summaryData}</p>
+
           <h2>Work History</h2>
+
           {workExperience.map((workEntry) => (
-            <div key={workEntry.id}>
-              <h3>{workEntry.position}</h3>
+            <div key={workEntry.id} className="cvEntry">
+              <h3>
+                {workEntry.position}
+                <span className="workDates">
+                  {', '}
+                  {workEntry.startDate}
+                  {' - '}
+                  {!workEntry.stillEmployed ? workEntry.endDate : 'Present'}
+                </span>
+              </h3>
+              <h4>
+                {workEntry.company}
+                {', '}
+                {workEntry.location}
+              </h4>
+              <p>{workEntry.description}</p>
+
+              {/* <h3>{workEntry.position}</h3>
               <h4>{workEntry.company}</h4>
+              <h4>{workEntry.location}</h4>
               <h4>{workEntry.startDate}</h4>
+              <h4>{workEntry.endDate}</h4>
+              <h4>{workEntry.stillEmployed}</h4>
+              <h4>{workEntry.description}</h4> */}
             </div>
           ))}
           <h2>Education</h2>
@@ -176,10 +198,12 @@ function CVAplication() {
             <div key={educationEntry.id}>
               <h3>{educationEntry.degree}</h3>
               <h4>{educationEntry.school}</h4>
+              <h4>{educationEntry.location}</h4>
               <h4>{educationEntry.startDate}</h4>
+              <h4>{educationEntry.endDate}</h4>
+              <h4>{educationEntry.stillEnrolled}</h4>
             </div>
           ))}
-
           {/* <h3>Masters of Water Engineering, Sep 2015 - June 2019</h3>
           <h4>Warwick University</h4>
           <h5>Warwick, England</h5> */}

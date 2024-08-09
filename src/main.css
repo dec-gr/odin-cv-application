@@ -1,8 +1,10 @@
 .cvDisplay {
   display: grid;
   grid-template-columns: 3fr 1fr;
-  height: auto;
+  height: fit-content;
   border: solid black 1px;
+  min-width: 50rem;
+  min-height: 60em;
 }
 
 .cvSideBar {
@@ -21,6 +23,7 @@ h1 {
 
 .cvBody {
   text-align: left;
+  height: fit-content;
 }
 
 .cvDisplay h2 {
@@ -28,4 +31,20 @@ h1 {
   padding-bottom: 0.25em;
   margin: 0.5em 0.25em;
   color: darkcyan;
+}
+
+.workDates {
+  font-weight: normal;
+}
+
+.cvDisplay h3 {
+  margin-bottom: 0;
+}
+
+.cvDisplay h4 {
+  margin-top: 0;
+}
+
+.cvEntry {
+  padding: 0rem 0.5rem;
 }

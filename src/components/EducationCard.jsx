@@ -53,6 +53,7 @@ function EducationCard({
           type="checkBox"
           onClick={(e) => handleIsStillEnrolledChange(educationEntry.id, e)}
           checked={educationEntry.stillEnrolled}
+          onChange={() => {}}
         ></input>
       </label>
 
@@ -107,7 +108,6 @@ export default function EducationList({ education, setEducation }) {
     setEducation(
       updateValueInObjectArray(education, id, 'stillEnrolled', e.target.checked)
     );
-    console.log(e.target.checked);
   }
 
   function handleLocationChange(id, e) {

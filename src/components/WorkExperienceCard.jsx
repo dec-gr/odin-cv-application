@@ -1,5 +1,6 @@
 import DataForm from './DataForm';
 import Input from './Input';
+import InputTextBox from './InputTextBox.jsx';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { updateValueInObjectArray } from './utils.js';
@@ -38,12 +39,14 @@ function WorkExperienceCard({
       <Input
         label="Start Date"
         fieldValue={workEntry.startDate}
+        type="date"
         controlled={true}
         onChange={(e) => handleStartDateChange(workEntry.id, e)}
       />
       <Input
         label="End Date"
         fieldValue={workEntry.endDate}
+        type="date"
         controlled={true}
         onChange={(e) => handleEndDateChange(workEntry.id, e)}
         disabled={workEntry.stillEmployed}
@@ -54,13 +57,13 @@ function WorkExperienceCard({
           type="checkBox"
           onClick={(e) => handleStillEmployedChange(workEntry.id, e)}
           checked={workEntry.stillEmployed}
+          onChange={() => {}}
         ></input>
       </label>
 
-      <Input
+      <InputTextBox
         label="Description"
         fieldValue={workEntry.description}
-        controlled={true}
         onChange={(e) => handleDescriptionChange(workEntry.id, e)}
       />
       <button onClick={() => removeWorkExperienceHandler(workEntry.id)}>
