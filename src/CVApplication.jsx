@@ -11,12 +11,13 @@ import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 const CVData = {
-  firstName: '',
-  lastName: '',
-  email: '',
-  phone: '',
-  address: '',
-  summary: '',
+  firstName: 'Declan',
+  lastName: 'Grant',
+  email: 'declanthomasgrant@gmail.com',
+  phone: '07837228981',
+  address: '94 Purves Road, London',
+  summary:
+    'I am a professional Water Engineer, having spent many years building and maintaining water networks across the UK.',
   skill: '',
 };
 
@@ -28,8 +29,8 @@ const initialSkills = [
 
 const initialEducation = [
   {
-    school: 'Warwick',
-    degree: 'Engineering',
+    school: 'The University of Warwick',
+    degree: 'Masters in Water Engineering',
     startDate: '1998-05-12',
     endDate: '1998-05-12',
     stillEnrolled: true,
@@ -41,19 +42,31 @@ const initialEducation = [
 const initialWorkExperience = [
   {
     id: uuidv4(),
-    position: 'water engineer',
-    company: 'hydrax',
+    position: 'Water Systems Engineer',
+    company: 'Hydrax',
     location: 'London',
-    startDate: '1998-05-12',
-    endDate: '1998-05-12',
+    startDate: '2017-05-12',
+    endDate: '2017-05-12',
+    stillEmployed: true,
+    description:
+      'I built and maintained Hydrax water systems across North West London.',
+  },
+  {
+    id: uuidv4(),
+    position: 'Water Systems Surveyor',
+    company: 'Thames Water',
+    location: 'London',
+    startDate: '2010-05-12',
+    endDate: '2017-05-12',
     stillEmployed: false,
-    description: '',
+    description:
+      'Worked for Thames Water, surveying and reporting on their network.',
   },
 ];
 
 function CVAplication() {
   const [applicationData, setApplicationData] = useState(CVData);
-  const [summaryData, setSummaryData] = useState('');
+  //const [summaryData, setSummaryData] = useState('');
 
   const [skills, setSkills] = useState(initialSkills);
   const [education, setEducation] = useState(initialEducation);
@@ -80,8 +93,8 @@ function CVAplication() {
   }
 
   function handleSummaryChange(e) {
-    // setApplicationData({ ...applicationData, summary: e.target.value });
-    setSummaryData(e.target.value);
+    setApplicationData({ ...applicationData, summary: e.target.value });
+    //setSummaryData(e.target.value);
   }
 
   return (
@@ -129,7 +142,7 @@ function CVAplication() {
           <Card>
             <InputTextBox
               label="Professional Summary"
-              fieldValue={summaryData}
+              fieldValue={applicationData.summary}
               onChange={handleSummaryChange}
             />
           </Card>
@@ -161,7 +174,9 @@ function CVAplication() {
             {applicationData.firstName} {applicationData.lastName}
           </h1>
           <h2>Professional Summary</h2>
-          <p>{summaryData}</p>
+          <div className="cvEntry">
+            <p>{applicationData.summary}</p>
+          </div>
 
           <h2>Work History</h2>
 
@@ -195,13 +210,23 @@ function CVAplication() {
           <h2>Education</h2>
 
           {education.map((educationEntry) => (
-            <div key={educationEntry.id}>
-              <h3>{educationEntry.degree}</h3>
-              <h4>{educationEntry.school}</h4>
-              <h4>{educationEntry.location}</h4>
-              <h4>{educationEntry.startDate}</h4>
-              <h4>{educationEntry.endDate}</h4>
-              <h4>{educationEntry.stillEnrolled}</h4>
+            <div key={educationEntry.id} className="cvEntry">
+              <h3>
+                {educationEntry.degree}
+                <span className="workDates">
+                  {', '}
+                  {educationEntry.startDate}
+                  {' - '}
+                  {!educationEntry.stillEnrolled
+                    ? educationEntry.endDate
+                    : 'Present'}
+                </span>
+              </h3>
+              <h4>
+                {educationEntry.school}
+                {', '}
+                {educationEntry.location}
+              </h4>
             </div>
           ))}
           {/* <h3>Masters of Water Engineering, Sep 2015 - June 2019</h3>
