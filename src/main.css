@@ -39,12 +39,31 @@ h1 {
 
 .cvDisplay h3 {
   margin-bottom: 0;
+  border-bottom: solid white 1px;
 }
-
 .cvDisplay h4 {
   margin-top: 0;
 }
 
 .cvEntry {
   padding: 0rem 0.5rem;
+}
+
+.infoCont > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.Icon {
+  background-color: white;
+  color: darkcyan;
+  padding: 1px;
+  border-radius: 50%;
+}
+
+.cvSideBar ul {
+  padding-left: 25px;
 }

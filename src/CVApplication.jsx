@@ -10,21 +10,27 @@ import WorkExperienceList from './components/WorkExperienceCard.jsx';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
+import Icon from '@mdi/react';
+import { mdiMapMarker, mdiPhone, mdiEmail } from '@mdi/js';
+
 const CVData = {
-  firstName: 'Declan',
-  lastName: 'Grant',
-  email: 'declanthomasgrant@gmail.com',
-  phone: '07837228981',
-  address: '94 Purves Road, London',
+  firstName: 'Steve',
+  lastName: 'Petroski',
+  email: 'spetroski@gmail.com',
+  phone: '0783127226561',
+  address: '82 Kent Road, London',
   summary:
     'I am a professional Water Engineer, having spent many years building and maintaining water networks across the UK.',
   skill: '',
 };
 
 const initialSkills = [
-  { id: uuidv4(), skill: 'cycling' },
-  { id: uuidv4(), skill: 'swimming' },
-  { id: uuidv4(), skill: 'climbing' },
+  {
+    id: uuidv4(),
+    skill: 'Excellent Communication Skills',
+  },
+  { id: uuidv4(), skill: 'Problem Resolution' },
+  { id: uuidv4(), skill: 'Team Work' },
 ];
 
 const initialEducation = [
@@ -236,12 +242,16 @@ function CVAplication() {
         <div className="cvSideBar">
           <div className="infoCont">
             <div className="addressCont">
+              <Icon path={mdiMapMarker} size={1} className="Icon" />
+
               <p>{applicationData.address}</p>
             </div>
             <div className="phoneCont">
+              <Icon path={mdiPhone} size={1} className="Icon" />
               <p>{applicationData.phone}</p>
             </div>
             <div className="emailCont">
+              <Icon path={mdiEmail} size={1} className="Icon" />
               <p>{applicationData.email}</p>
             </div>
           </div>
