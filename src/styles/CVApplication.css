@@ -73,6 +73,8 @@ button:focus-visible {
   height: fit-content;
   border: solid black 1px;
   min-width: 50rem;
+  max-width: 60rem;
+
   min-height: 60em;
 }
 
