@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import '../styles/SkillCard.css';
 
 function SkillInput({ skill, onChangeHandler, removeSkillHander }) {
   return (
@@ -40,7 +41,7 @@ export default function SkillInputList({ skills, setSkills }) {
 
   return (
     <div className="div">
-      <ul>
+      <ul className="skillList">
         {skills.map((skill) => (
           <li key={skill.id}>
             <SkillInput
@@ -51,7 +52,9 @@ export default function SkillInputList({ skills, setSkills }) {
           </li>
         ))}
       </ul>
-      <button onClick={addSkillHandler}>Add Skill</button>
+      <button onClick={addSkillHandler} className="addSkill">
+        Add Skill
+      </button>
     </div>
   );
 }

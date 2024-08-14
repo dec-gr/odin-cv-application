@@ -17,59 +17,65 @@ function WorkExperienceCard({
   removeWorkExperienceHandler,
 }) {
   return (
-    <DataForm>
-      <Input
-        label="Position"
-        fieldValue={workEntry.position}
-        controlled={true}
-        onChange={(e) => handlePositionChange(workEntry.id, e)}
-      />
-      <Input
-        label="Company"
-        fieldValue={workEntry.company}
-        controlled={true}
-        onChange={(e) => handleCompanyChange(workEntry.id, e)}
-      />
-      <Input
-        label="Location"
-        fieldValue={workEntry.location}
-        controlled={true}
-        onChange={(e) => handleLocationChange(workEntry.id, e)}
-      />
-      <Input
-        label="Start Date"
-        fieldValue={workEntry.startDate}
-        type="date"
-        controlled={true}
-        onChange={(e) => handleStartDateChange(workEntry.id, e)}
-      />
-      <Input
-        label="End Date"
-        fieldValue={workEntry.endDate}
-        type="date"
-        controlled={true}
-        onChange={(e) => handleEndDateChange(workEntry.id, e)}
-        disabled={workEntry.stillEmployed}
-      />
-      <label className="Input">
-        Still Employed
-        <input
-          type="checkBox"
-          onClick={(e) => handleStillEmployedChange(workEntry.id, e)}
-          checked={workEntry.stillEmployed}
-          onChange={() => {}}
-        ></input>
-      </label>
-
-      <InputTextBox
-        label="Description"
-        fieldValue={workEntry.description}
-        onChange={(e) => handleDescriptionChange(workEntry.id, e)}
-      />
-      <button onClick={() => removeWorkExperienceHandler(workEntry.id)}>
+    <>
+      <button
+        onClick={() => removeWorkExperienceHandler(workEntry.id)}
+        className="removeInputListItemBtn"
+      >
         X
       </button>
-    </DataForm>
+      <DataForm>
+        <Input
+          label="Position"
+          fieldValue={workEntry.position}
+          controlled={true}
+          onChange={(e) => handlePositionChange(workEntry.id, e)}
+        />
+        <Input
+          label="Company"
+          fieldValue={workEntry.company}
+          controlled={true}
+          onChange={(e) => handleCompanyChange(workEntry.id, e)}
+        />
+        <Input
+          label="Location"
+          fieldValue={workEntry.location}
+          controlled={true}
+          onChange={(e) => handleLocationChange(workEntry.id, e)}
+        />
+        <Input
+          label="Start Date"
+          fieldValue={workEntry.startDate}
+          type="date"
+          controlled={true}
+          onChange={(e) => handleStartDateChange(workEntry.id, e)}
+        />
+        <label className="Input">
+          Still Employed
+          <input
+            type="checkBox"
+            onClick={(e) => handleStillEmployedChange(workEntry.id, e)}
+            checked={workEntry.stillEmployed}
+            onChange={() => {}}
+          ></input>
+        </label>
+
+        <Input
+          label="End Date"
+          fieldValue={workEntry.endDate}
+          type="date"
+          controlled={true}
+          onChange={(e) => handleEndDateChange(workEntry.id, e)}
+          disabled={workEntry.stillEmployed}
+        />
+
+        <InputTextBox
+          label="Description"
+          fieldValue={workEntry.description}
+          onChange={(e) => handleDescriptionChange(workEntry.id, e)}
+        />
+      </DataForm>
+    </>
   );
 }
 
@@ -148,7 +154,7 @@ export default function WorkExperienceList({
   return (
     <>
       {workExperience.map((workEntry) => (
-        <li key={workEntry.id}>
+        <li key={workEntry.id} className="cvInputListItem">
           <WorkExperienceCard
             workEntry={workEntry}
             handlePositionChange={handlePositionChange}
@@ -162,7 +168,9 @@ export default function WorkExperienceList({
           />
         </li>
       ))}
-      <button onClick={addWorkExperience}>Add Work Entry</button>
+      <button onClick={addWorkExperience} className="addToListBtn">
+        Add Work Entry
+      </button>
     </>
   );
 }
